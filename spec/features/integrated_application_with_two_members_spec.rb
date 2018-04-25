@@ -263,7 +263,7 @@ RSpec.feature "Integrated application" do
       proceed_with "No"
     end
 
-    on_page "Income" do
+    on_page "Income and Employment" do
       expect(page).to have_content(
         "Has your household had a change in income in the past 30 days?",
       )
@@ -271,7 +271,7 @@ RSpec.feature "Integrated application" do
       proceed_with "No"
     end
 
-    on_page "Jobs" do
+    on_page "Income and Employment" do
       expect(page).to have_content(
         "Who currently has a job?",
       )
@@ -282,7 +282,7 @@ RSpec.feature "Integrated application" do
       proceed_with "Continue"
     end
 
-    on_page "Self-Employment" do
+    on_page "Income and Employment" do
       expect(page).to have_content(
         "Is anyone self-employed in any way?",
       )
@@ -290,7 +290,7 @@ RSpec.feature "Integrated application" do
       proceed_with "No"
     end
 
-    on_page "Income" do
+    on_page "Income and Employment" do
       expect(page).to have_content(
         "Do you get income from any of these sources?",
       )
@@ -298,7 +298,7 @@ RSpec.feature "Integrated application" do
       proceed_with "Continue"
     end
 
-    on_page "Income" do
+    on_page "Income and Employment" do
       expect(page).to have_content(
         "Does Jonny get income from any of these sources?",
       )
