@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425222025) do
+ActiveRecord::Schema.define(version: 20180427170729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20180425222025) do
     t.string "application_member_type"
     t.datetime "created_at", null: false
     t.string "employer_name"
+    t.integer "hourly_or_salary", default: 0
     t.integer "hours_per_week"
     t.integer "member_id"
     t.string "pay_quantity"
@@ -192,6 +193,7 @@ ActiveRecord::Schema.define(version: 20180425222025) do
     t.bigint "common_application_id"
     t.datetime "created_at", null: false
     t.integer "disabled", default: 0
+    t.integer "employments_count", default: 0
     t.string "encrypted_ssn"
     t.string "encrypted_ssn_iv"
     t.integer "filing_taxes_next_year", default: 0
