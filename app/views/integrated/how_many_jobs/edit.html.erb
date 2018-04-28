@@ -10,7 +10,9 @@
 
 <% content_for :form_card_body do %>
     <%= fields_for(:form, @form, builder: MbFormBuilder) do |f| %>
-      <% @form.members.each_with_index do |member| %>
+        <%= f.hidden_field :id %>
+
+        <% @form.members.each_with_index do |member| %>
         <%= f.fields_for('members[]', member, hidden_field_id: true) do |ff| %>
           <% if member.primary_member? %>
             <%= ff.hidden_field :id %>

@@ -22,6 +22,10 @@ class HouseholdMember < ApplicationRecord
     where(tax_relationship: ["primary", "married_filing_jointly", "dependent"]).order("created_at")
   }
 
+  scope :employed, -> {
+    joins(:employments).distinct
+  }
+
   scope :pregnant, -> { where(pregnant: "yes").order("created_at") }
 
   scope :after, ->(member = nil) { where("created_at > ?", member&.created_at) }

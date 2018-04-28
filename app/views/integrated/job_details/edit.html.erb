@@ -1,0 +1,36 @@
+<% content_for :header_title, "Income and Employment" %>
+
+<% content_for :form_card_title do %>
+  <% if current_member == current_application.primary_member %>
+      <%= t(".title.primary_member", count: current_member.employments_count) %>
+  <% else %>
+      <%= t(".title.other_member",
+        name: current_member.display_name(first_only: true),
+        count: current_member.employments_count) %>
+  <% end %>
+<% end %>
+
+<% content_for :form_card_body do %>
+  <%= fields_for(:form, @form, builder: MbFormBuilder) do |f| %>
+    <% @form.employments.each_with_index do |job, index| %>
+      <%= f.fields_for("employments[]", job, hidden_field_id: true) do |ff| %>
+        <% if @form.employments.count > 1 %>
+          <p>Job #<%= index + 1%></p>
+        <% end %>
+
+        <%= ff.mb_input_field :employer_name,
+          "Employer Name",
+          autofocus: true %>
+
+        <%= ff.mb_radio_set :hourly_or_salary,
+          label_text: t(".hourly_or_salary_label", **member_appropriate_translation_data),
+          collection: [{ value: :hourly, label: "Hourly" }, { value: :salaried, label: "Salaried" }],
+          layout: "inline" %>
+
+        <%= ff.mb_radio_set :payment_frequency,
+          label_text: t(".payment_frequency_label", **member_appropriate_translation_data),
+          collection: Employment::PAYCHECK_INTERVALS.map{|key, value| { value: key, label: value }} %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
