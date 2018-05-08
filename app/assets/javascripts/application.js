@@ -126,6 +126,10 @@ var followUpQuestion = (function() {
       $('.question-with-follow-up__question select').each(function(index, select) {
         $($($(this).find('option:selected')).attr('data-follow-up')).show();
       });
+      $('.question-with-follow-up__question input:checked').each(function(index, input) {
+        $($(this).attr('data-follow-up')).show();
+      });
+
       // handle selection events
       $('.question-with-follow-up__question select').change(function(e) {
         $('.question-with-follow-up__follow-up').hide();
@@ -133,6 +137,12 @@ var followUpQuestion = (function() {
           $(this).prop('checked', false);
         });
         $($($(this).find('option:selected')).attr('data-follow-up')).show();
+      });
+
+      // handle checkbox and radio button clicks
+      $('.question-with-follow-up__question input').click(function(e) {
+        $('.question-with-follow-up__follow-up').hide();
+        $($(this).attr('data-follow-up')).show();
       });
     }
   };

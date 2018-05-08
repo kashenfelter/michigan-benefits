@@ -102,6 +102,10 @@ class FormsController < ApplicationController
     filtered_params(form_class.navigator_attributes)
   end
 
+  def employment_params
+    filtered_params(form_class.employment_attributes)
+  end
+
   def combined_birthday_fields(day: nil, month: nil, year: nil)
     if [year, month, day].all? &:present?
       {

@@ -25,7 +25,7 @@ RSpec.describe HouseholdAddMemberController do
     @_current_app ||= create(:snap_application, members: [member])
   end
 
-  def member
+  def employmentmember
     @_member ||=
       build(:member, sex: "male", relationship: "Child", ssn: "123456789")
   end

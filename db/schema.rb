@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427170729) do
+ActiveRecord::Schema.define(version: 20180501041944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
+    t.string "address_type"
     t.bigint "benefit_application_id", null: false
     t.string "benefit_application_type", null: false
     t.string "city", null: false
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 20180427170729) do
     t.boolean "immigration_info", default: false
     t.boolean "money_in_accounts", default: false
     t.boolean "own_vehicles", default: false
+    t.boolean "residential_mailing_same", default: true
     t.boolean "resides_in_state", default: true
     t.datetime "updated_at", null: false
     t.index ["common_application_id"], name: "index_application_navigators_on_common_application_id"
@@ -295,6 +297,7 @@ ActiveRecord::Schema.define(version: 20180427170729) do
     t.string "employed_pay_interval"
     t.integer "employed_pay_quantity"
     t.string "employment_status"
+    t.integer "employments_count", default: 0
     t.string "encrypted_last_four_ssn"
     t.string "encrypted_last_four_ssn_iv"
     t.string "encrypted_ssn"

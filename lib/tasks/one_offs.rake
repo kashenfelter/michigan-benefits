@@ -26,5 +26,11 @@ namespace :one_offs do
     HouseholdMember.pluck(:id).each do |id|
       HouseholdMember.reset_counters id, :employments
     end
+
+    # Reset and backfill cache counter for employments
+    Member.reset_column_information
+    Member.pluck(:id).each do |id|
+      Member.reset_counters id, :employments
+    end
   end
 end
